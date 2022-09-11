@@ -1,8 +1,8 @@
-package verification;
+package us.shirecraft.verification;
 
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
-import verification.commands.VerifyCommand;
+import us.shirecraft.verification.commands.VerifyCommand;
 
 public class PlayerVerification extends JavaPlugin {
     @Override

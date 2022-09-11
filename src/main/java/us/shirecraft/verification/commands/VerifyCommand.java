@@ -1,4 +1,4 @@
-package verification.commands;
+package us.shirecraft.verification.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
