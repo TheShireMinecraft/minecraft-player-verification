@@ -6,7 +6,8 @@
 
     <groupId>us.shirecraft</groupId>
     <artifactId>minecraft-player-verification</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -29,5 +30,27 @@
             <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.8.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
