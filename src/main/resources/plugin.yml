@@ -10,3 +10,4 @@ prefix: PlayerVerification
 commands:
   verify:
     description: Verify your account for use on our website
+    usage: /verify
