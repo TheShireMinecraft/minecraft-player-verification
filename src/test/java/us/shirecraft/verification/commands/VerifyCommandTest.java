@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 
 import java.util.UUID;
 
@@ -35,6 +36,7 @@ public class VerifyCommandTest {
         systemUnderTest.onCommand(sender, mock(Command.class), "", new String[0]);
 
         // Assert
-        verify(sender).sendMessage("Hello, player with UUID " + expectedUuid + " !");
+        verify(sender).sendMessage("Use the link below to verify your account:");
+        verify(sender).sendMessage(ArgumentMatchers.startsWith("https://shirecraft.us/verify/"));
     }
 }
