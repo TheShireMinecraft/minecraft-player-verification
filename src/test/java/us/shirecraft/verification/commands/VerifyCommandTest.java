@@ -35,6 +35,6 @@ public class VerifyCommandTest {
         systemUnderTest.onCommand(sender, mock(Command.class), "", new String[0]);
 
         // Assert
-        verify(sender).sendMessage("Hello, player with UUID " + expectedUuid + "!");
+        verify(sender).sendMessage("Hello, player with UUID " + expectedUuid + " !");
     }
 }
