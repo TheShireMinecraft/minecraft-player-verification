@@ -4,7 +4,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 import us.shirecraft.verification.commands.VerifyCommand;
 
-public class PlayerVerification extends JavaPlugin {
+public final class PlayerVerification extends JavaPlugin {
     @Override
     public void onEnable() {
         PluginCommand verifyCommand = this.getCommand("verify");
