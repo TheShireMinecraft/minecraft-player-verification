@@ -22,12 +22,12 @@ public class TokenService {
         var builder = Jwts.builder();
         builder.setSubject(uuid);
         builder.setIssuedAt(new Date());
-        builder.setExpiration(getExpiryDate(10));
+        builder.setExpiration(calculateExpiryDate(10));
         builder.signWith(_signingKey, _algorithm);
         return builder.compact();
     }
 
-    private Date getExpiryDate(int minutesToExpiry) {
+    private Date calculateExpiryDate(int minutesToExpiry) {
         return Date.from(
                 Instant.now().plus(minutesToExpiry, ChronoUnit.MINUTES)
         );
