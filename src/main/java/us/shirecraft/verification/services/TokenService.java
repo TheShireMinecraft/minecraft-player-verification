@@ -4,26 +4,28 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.jetbrains.annotations.NotNull;
+import us.shirecraft.verification.models.PluginConfiguration;
 
-import javax.crypto.SecretKey;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class TokenService {
-    private final SignatureAlgorithm _algorithm = SignatureAlgorithm.HS256;
-    private final SecretKey _signingKey; // TODO move key to a configuration item
+    private final PluginConfiguration _config;
 
-    public TokenService() {
-        _signingKey = Keys.hmacShaKeyFor("-temporary-key-%%-temporary-key-".getBytes()); // 32 chars
+    public TokenService(PluginConfiguration config) {
+        _config = config;
     }
 
     public String generateTokenForUuid(@NotNull String uuid) {
         var builder = Jwts.builder();
         builder.setSubject(uuid);
         builder.setIssuedAt(new Date());
-        builder.setExpiration(calculateExpiryDate(10));
-        builder.signWith(_signingKey, _algorithm);
+        builder.setExpiration(calculateExpiryDate(_config.tokenExpiryInMinutes));
+        builder.signWith(
+            Keys.hmacShaKeyFor(_config.tokenSigningKey.getBytes()),
+            SignatureAlgorithm.HS256
+        );
         return builder.compact();
     }
 

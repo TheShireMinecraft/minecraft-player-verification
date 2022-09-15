@@ -2,6 +2,7 @@ package us.shirecraft.verification.services;
 
 import io.jsonwebtoken.Jwts;
 import org.junit.jupiter.api.Test;
+import us.shirecraft.verification.models.PluginConfiguration;
 
 import java.util.Date;
 
@@ -11,14 +12,16 @@ public class TokenServiceTest {
     @Test
     void generateTokenForUuid__should_generate_signed_token_with_player_uuid() {
         // Arrange
-        var systemUnderTest = new TokenService();
-        var signingKey = "-temporary-key-%%-temporary-key-".getBytes();
+        var config = new PluginConfiguration();
+        config.tokenSigningKey = "-temporary-key-%%-temporary-key-";
+        config.tokenExpiryInMinutes = 10;
+        var systemUnderTest = new TokenService(config);
         var playerUuid = "31e36756-3820-4de5-bcff-f73902bba8ca";
 
         // Act
         var token = systemUnderTest.generateTokenForUuid(playerUuid);
         var jwtClaims = Jwts.parserBuilder()
-            .setSigningKey(signingKey)
+            .setSigningKey(config.tokenSigningKey.getBytes())
             .build()
             .parseClaimsJws(token)
             .getBody();
@@ -32,6 +35,6 @@ public class TokenServiceTest {
 
         // Assert
         assertEquals(playerUuid, jwtClaims.getSubject());
-        assertEquals(10, tokenLifeInMinutes);
+        assertEquals(config.tokenExpiryInMinutes, tokenLifeInMinutes);
     }
 }
