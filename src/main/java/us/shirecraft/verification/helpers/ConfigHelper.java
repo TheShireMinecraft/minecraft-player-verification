@@ -1,6 +1,6 @@
 package us.shirecraft.verification.helpers;
 
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.MemoryConfiguration;
 import us.shirecraft.verification.models.PluginConfiguration;
 
 public class ConfigHelper {
@@ -11,14 +11,14 @@ public class ConfigHelper {
             10
         );
 
-    public static void BuildDefaultConfiguration(FileConfiguration config) {
+    public static void BuildDefaultConfiguration(MemoryConfiguration config) {
         config.addDefault("verificationBaseUrl", _defaults.verificationBaseUrl);
         config.addDefault("tokenSigningKey", _defaults.tokenSigningKey);
         config.addDefault("tokenExpiryInMinutes", _defaults.tokenExpiryInMinutes);
         config.options().copyDefaults(true);
     }
 
-    public static PluginConfiguration MapConfigurationToModel(FileConfiguration config) {
+    public static PluginConfiguration MapConfigurationToModel(MemoryConfiguration config) {
         var model = new PluginConfiguration();
         model.verificationBaseUrl = config.getString("verificationBaseUrl", _defaults.verificationBaseUrl);
         model.tokenSigningKey = config.getString("tokenSigningKey", _defaults.tokenSigningKey);
