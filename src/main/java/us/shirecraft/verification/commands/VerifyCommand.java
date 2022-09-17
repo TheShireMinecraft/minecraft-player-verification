@@ -6,14 +6,17 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import us.shirecraft.verification.helpers.UrlHelper;
+import us.shirecraft.verification.models.PluginConfiguration;
 import us.shirecraft.verification.services.TokenService;
 
 public class VerifyCommand implements CommandExecutor {
     private final TokenService _service;
     private final UrlHelper _urlHelper;
+    private final PluginConfiguration _config;
 
-    public VerifyCommand() {
-        _service = new TokenService();
+    public VerifyCommand(PluginConfiguration config) {
+        _config = config;
+        _service = new TokenService(config);
         _urlHelper = new UrlHelper();
     }
 
@@ -39,6 +42,6 @@ public class VerifyCommand implements CommandExecutor {
     private String buildVerificationUrlForPlayer(Player player) {
         var playerUuid = player.getUniqueId().toString();
         var token = _service.generateTokenForUuid(playerUuid);
-        return _urlHelper.buildUrlForToken(token);
+        return UrlHelper.buildUrlForToken(_config.verificationBaseUrl, token);
     }
 }
