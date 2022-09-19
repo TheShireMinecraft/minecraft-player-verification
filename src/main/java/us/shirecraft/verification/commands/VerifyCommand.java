@@ -44,7 +44,8 @@ public class VerifyCommand implements CommandExecutor {
             _config.verificationBaseUrl,
             token,
             _config.replaceJwtDotsWithSlashes,
-            _config.omitJwtHeaderFromUrl
+            _config.omitJwtHeaderFromUrl,
+            _config.omitJwtHeaderAndPayloadEyjPrefix
         );
     }
 }

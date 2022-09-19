@@ -27,6 +27,7 @@ public class ConfigHelperTest {
         verify(mockConfiguration).addDefault(ArgumentMatchers.eq("tokenExpiryInMinutes"), ArgumentMatchers.anyInt());
         verify(mockConfiguration).addDefault(ArgumentMatchers.eq("replaceJwtDotsWithSlashes"), ArgumentMatchers.anyBoolean());
         verify(mockConfiguration).addDefault(ArgumentMatchers.eq("omitJwtHeaderFromUrl"), ArgumentMatchers.anyBoolean());
+        verify(mockConfiguration).addDefault(ArgumentMatchers.eq("omitJwtHeaderAndPayloadEyjPrefix"), ArgumentMatchers.anyBoolean());
         verify(mockConfiguration).options();
         verifyNoMoreInteractions(mockConfiguration);
         verify(mockOptions).copyDefaults(true);
@@ -41,6 +42,7 @@ public class ConfigHelperTest {
         config.set("tokenExpiryInMinutes", 567);
         config.set("replaceJwtDotsWithSlashes", true);
         config.set("omitJwtHeaderFromUrl", false);
+        config.set("omitJwtHeaderAndPayloadEyjPrefix", false);
 
         // Act
         var actual = ConfigHelper.MapConfigurationToModel(config);
@@ -51,5 +53,6 @@ public class ConfigHelperTest {
         assertEquals(567, actual.tokenExpiryInMinutes);
         assertTrue(actual.replaceJwtDotsWithSlashes);
         assertFalse(actual.omitJwtHeaderFromUrl);
+        assertFalse(actual.omitJwtHeaderAndPayloadEyjPrefix);
     }
 }

@@ -10,6 +10,7 @@ public class ConfigHelper {
             "example-key-32-chars-example-key",
             10,
             true,
+            false,
             false
         );
 
@@ -19,6 +20,7 @@ public class ConfigHelper {
         config.addDefault("tokenExpiryInMinutes", _defaults.tokenExpiryInMinutes);
         config.addDefault("replaceJwtDotsWithSlashes", _defaults.replaceJwtDotsWithSlashes);
         config.addDefault("omitJwtHeaderFromUrl", _defaults.omitJwtHeaderFromUrl);
+        config.addDefault("omitJwtHeaderAndPayloadEyjPrefix", _defaults.omitJwtHeaderAndPayloadEyjPrefix);
         config.options().copyDefaults(true);
     }
 
@@ -29,6 +31,7 @@ public class ConfigHelper {
         model.tokenExpiryInMinutes = config.getInt("tokenExpiryInMinutes", _defaults.tokenExpiryInMinutes);
         model.replaceJwtDotsWithSlashes = config.getBoolean("replaceJwtDotsWithSlashes", _defaults.replaceJwtDotsWithSlashes);
         model.omitJwtHeaderFromUrl = config.getBoolean("omitJwtHeaderFromUrl", _defaults.omitJwtHeaderFromUrl);
+        model.omitJwtHeaderAndPayloadEyjPrefix = config.getBoolean("omitJwtHeaderAndPayloadEyjPrefix", _defaults.omitJwtHeaderAndPayloadEyjPrefix);
         return model;
     }
 }

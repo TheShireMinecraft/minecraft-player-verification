@@ -6,6 +6,7 @@ public class PluginConfiguration {
     public int tokenExpiryInMinutes;
     public boolean replaceJwtDotsWithSlashes;
     public boolean omitJwtHeaderFromUrl;
+    public boolean omitJwtHeaderAndPayloadEyjPrefix;
 
     public PluginConfiguration() {
     }
@@ -15,12 +16,14 @@ public class PluginConfiguration {
         String tokenSigningKey,
         int tokenExpiryInMinutes,
         boolean replaceJwtDotsWithSlashes,
-        boolean omitJwtHeaderFromUrl
+        boolean omitJwtHeaderFromUrl,
+        boolean omitJwtHeaderAndPayloadEyjPrefix
     ) {
         this.verificationBaseUrl = verificationBaseUrl;
         this.tokenSigningKey = tokenSigningKey;
         this.tokenExpiryInMinutes = tokenExpiryInMinutes;
         this.replaceJwtDotsWithSlashes = replaceJwtDotsWithSlashes;
         this.omitJwtHeaderFromUrl = omitJwtHeaderFromUrl;
+        this.omitJwtHeaderAndPayloadEyjPrefix = omitJwtHeaderAndPayloadEyjPrefix;
     }
 }
