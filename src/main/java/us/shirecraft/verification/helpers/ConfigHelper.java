@@ -9,7 +9,8 @@ public class ConfigHelper {
             "https://localhost.localdomain/verify/",
             "example-key-32-chars-example-key",
             10,
-            true
+            true,
+            false
         );
 
     public static void BuildDefaultConfiguration(MemoryConfiguration config) {
@@ -17,6 +18,7 @@ public class ConfigHelper {
         config.addDefault("tokenSigningKey", _defaults.tokenSigningKey);
         config.addDefault("tokenExpiryInMinutes", _defaults.tokenExpiryInMinutes);
         config.addDefault("replaceJwtDotsWithSlashes", _defaults.replaceJwtDotsWithSlashes);
+        config.addDefault("omitJwtHeaderFromUrl", _defaults.omitJwtHeaderFromUrl);
         config.options().copyDefaults(true);
     }
 
@@ -26,6 +28,7 @@ public class ConfigHelper {
         model.tokenSigningKey = config.getString("tokenSigningKey", _defaults.tokenSigningKey);
         model.tokenExpiryInMinutes = config.getInt("tokenExpiryInMinutes", _defaults.tokenExpiryInMinutes);
         model.replaceJwtDotsWithSlashes = config.getBoolean("replaceJwtDotsWithSlashes", _defaults.replaceJwtDotsWithSlashes);
+        model.omitJwtHeaderFromUrl = config.getBoolean("omitJwtHeaderFromUrl", _defaults.omitJwtHeaderFromUrl);
         return model;
     }
 }
