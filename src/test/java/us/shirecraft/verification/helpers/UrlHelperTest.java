@@ -1,11 +1,8 @@
 package us.shirecraft.verification.helpers;
 
 import org.junit.jupiter.api.Test;
-import us.shirecraft.verification.commands.VerifyCommand;
-import us.shirecraft.verification.models.PluginConfiguration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 
 public class UrlHelperTest {
     @Test

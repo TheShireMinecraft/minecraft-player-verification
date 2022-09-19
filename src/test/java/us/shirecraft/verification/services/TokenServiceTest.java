@@ -1,7 +1,6 @@
 package us.shirecraft.verification.services;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.SignatureException;
 import org.junit.jupiter.api.Test;
 import us.shirecraft.verification.helpers.UrlHelper;
 import us.shirecraft.verification.models.PluginConfiguration;
