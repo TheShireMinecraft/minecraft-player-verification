@@ -6,7 +6,7 @@ import us.shirecraft.verification.models.PluginConfiguration;
 public class ConfigHelper {
     private final static PluginConfiguration _defaults =
         new PluginConfiguration(
-            "https://localhost.localdomain/verify/%s/%s/%s",
+            "https://localhost.localdomain/verify/",
             "example-key-32-chars-example-key",
             10
         );
