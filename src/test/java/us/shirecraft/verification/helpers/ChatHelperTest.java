@@ -1,6 +1,8 @@
 package us.shirecraft.verification.helpers;
 
+import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.junit.jupiter.api.Test;
@@ -24,5 +26,10 @@ public class ChatHelperTest {
         assertEquals(url, Objects.requireNonNull(actual.clickEvent()).value());
         assertEquals(NamedTextColor.GREEN, actual.color());
         assertTrue(actual.hasDecoration(TextDecoration.BOLD));
+        assertEquals(HoverEvent.Action.SHOW_TEXT, Objects.requireNonNull(actual.hoverEvent()).action());
+        assertEquals(
+            "Connect your in-game and website accounts",
+            ((TextComponent) Objects.requireNonNull(actual.hoverEvent()).value()).content()
+        );
     }
 }
