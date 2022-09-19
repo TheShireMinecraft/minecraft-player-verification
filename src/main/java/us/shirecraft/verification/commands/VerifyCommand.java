@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import us.shirecraft.verification.helpers.ChatHelper;
 import us.shirecraft.verification.helpers.UrlHelper;
 import us.shirecraft.verification.models.PluginConfiguration;
 import us.shirecraft.verification.services.TokenService;
@@ -31,8 +32,12 @@ public class VerifyCommand implements CommandExecutor {
             return true; // Suppress usage information by returning true
         }
 
-        sender.sendMessage("Use the link below to verify your account:");
-        sender.sendMessage(buildVerificationUrlForPlayer(player));
+        var verificationUrl = buildVerificationUrlForPlayer(player);
+        var verificationButton = ChatHelper.constructVerificationButtonForUrl(verificationUrl);
+
+        sender.sendMessage("");
+        sender.sendMessage("Use the button below to verify your account:");
+        sender.sendMessage(verificationButton);
 
         return true;
     }

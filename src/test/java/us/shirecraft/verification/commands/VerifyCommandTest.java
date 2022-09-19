@@ -1,5 +1,6 @@
 package us.shirecraft.verification.commands;
 
+import net.kyori.adventure.text.TextComponent;
 import org.bukkit.command.Command;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -41,7 +42,7 @@ public class VerifyCommandTest {
         systemUnderTest.onCommand(sender, mock(Command.class), "", new String[0]);
 
         // Assert
-        verify(sender).sendMessage("Use the link below to verify your account:");
-        verify(sender).sendMessage(ArgumentMatchers.startsWith("https://shirecraft.us/verify/"));
+        verify(sender).sendMessage("Use the button below to verify your account:");
+        verify(sender).sendMessage(ArgumentMatchers.any(TextComponent.class));
     }
 }
