@@ -7,7 +7,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class ConfigHelperTest {
@@ -25,6 +25,9 @@ public class ConfigHelperTest {
         verify(mockConfiguration).addDefault(ArgumentMatchers.eq("verificationBaseUrl"), ArgumentMatchers.anyString());
         verify(mockConfiguration).addDefault(ArgumentMatchers.eq("tokenSigningKey"), ArgumentMatchers.anyString());
         verify(mockConfiguration).addDefault(ArgumentMatchers.eq("tokenExpiryInMinutes"), ArgumentMatchers.anyInt());
+        verify(mockConfiguration).addDefault(ArgumentMatchers.eq("replaceJwtDotsWithSlashes"), ArgumentMatchers.anyBoolean());
+        verify(mockConfiguration).addDefault(ArgumentMatchers.eq("omitJwtHeaderFromUrl"), ArgumentMatchers.anyBoolean());
+        verify(mockConfiguration).addDefault(ArgumentMatchers.eq("omitJwtHeaderAndPayloadEyjPrefix"), ArgumentMatchers.anyBoolean());
         verify(mockConfiguration).options();
         verifyNoMoreInteractions(mockConfiguration);
         verify(mockOptions).copyDefaults(true);
@@ -37,6 +40,9 @@ public class ConfigHelperTest {
         config.set("verificationBaseUrl", "https://example.org/x/y/z");
         config.set("tokenSigningKey", "*$$$$$$$$$$@@@@@@@@@@!!!!!!!!!!*");
         config.set("tokenExpiryInMinutes", 567);
+        config.set("replaceJwtDotsWithSlashes", true);
+        config.set("omitJwtHeaderFromUrl", false);
+        config.set("omitJwtHeaderAndPayloadEyjPrefix", false);
 
         // Act
         var actual = ConfigHelper.MapConfigurationToModel(config);
@@ -45,5 +51,8 @@ public class ConfigHelperTest {
         assertEquals("https://example.org/x/y/z", actual.verificationBaseUrl);
         assertEquals("*$$$$$$$$$$@@@@@@@@@@!!!!!!!!!!*", actual.tokenSigningKey);
         assertEquals(567, actual.tokenExpiryInMinutes);
+        assertTrue(actual.replaceJwtDotsWithSlashes);
+        assertFalse(actual.omitJwtHeaderFromUrl);
+        assertFalse(actual.omitJwtHeaderAndPayloadEyjPrefix);
     }
 }
