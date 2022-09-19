@@ -42,6 +42,10 @@ public class VerifyCommand implements CommandExecutor {
     private String buildVerificationUrlForPlayer(Player player) {
         var playerUuid = player.getUniqueId().toString();
         var token = _service.generateTokenForUuid(playerUuid);
-        return UrlHelper.buildUrlForToken(_config.verificationBaseUrl, token);
+        return UrlHelper.buildUrlForToken(
+            _config.verificationBaseUrl,
+            token,
+            _config.replaceJwtDotsWithSlashes
+        );
     }
 }

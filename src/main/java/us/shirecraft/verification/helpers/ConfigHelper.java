@@ -8,13 +8,15 @@ public class ConfigHelper {
         new PluginConfiguration(
             "https://localhost.localdomain/verify/",
             "example-key-32-chars-example-key",
-            10
+            10,
+            true
         );
 
     public static void BuildDefaultConfiguration(MemoryConfiguration config) {
         config.addDefault("verificationBaseUrl", _defaults.verificationBaseUrl);
         config.addDefault("tokenSigningKey", _defaults.tokenSigningKey);
         config.addDefault("tokenExpiryInMinutes", _defaults.tokenExpiryInMinutes);
+        config.addDefault("replaceJwtDotsWithSlashes", _defaults.replaceJwtDotsWithSlashes);
         config.options().copyDefaults(true);
     }
 
@@ -23,6 +25,7 @@ public class ConfigHelper {
         model.verificationBaseUrl = config.getString("verificationBaseUrl", _defaults.verificationBaseUrl);
         model.tokenSigningKey = config.getString("tokenSigningKey", _defaults.tokenSigningKey);
         model.tokenExpiryInMinutes = config.getInt("tokenExpiryInMinutes", _defaults.tokenExpiryInMinutes);
+        model.replaceJwtDotsWithSlashes = config.getBoolean("replaceJwtDotsWithSlashes", _defaults.replaceJwtDotsWithSlashes);
         return model;
     }
 }
