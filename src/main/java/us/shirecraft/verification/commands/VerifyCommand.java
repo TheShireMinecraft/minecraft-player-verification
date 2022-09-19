@@ -35,6 +35,7 @@ public class VerifyCommand implements CommandExecutor {
         var verificationUrl = buildVerificationUrlForPlayer(player);
         var verificationButton = ChatHelper.constructVerificationButtonForUrl(verificationUrl);
 
+        sender.sendMessage("");
         sender.sendMessage("Use the button below to verify your account:");
         sender.sendMessage(verificationButton);
 
