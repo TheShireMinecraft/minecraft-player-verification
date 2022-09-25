@@ -5,6 +5,12 @@
 ## Overview
 Generates time-limited signed tokens players may use to verify ownership of their Minecraft account. For example, to link their in-game account to a website account.
 
+## Usage
+Players run `/verify` in-game which generates a time-limited token they can use to verify ownership of their Minecraft account.
+The plugin will generate the token, insert it into a URL, and present a button to the player that once clicked will take them to that URL. 
+You will need to write something to handle receiving and parsing the token on your web server. 
+The plugin will need to be configured with the same signing secret as the script on your web server.
+
 ## Configuration
 - `verificationBaseUrl` - The base URL of the verification endpoint you want to link to, which should typically include a trailing slash.
 - `tokenSigningKey` - The 32 character key with which to sign the token.
