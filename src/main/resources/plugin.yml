@@ -1,6 +1,6 @@
 main: us.shirecraft.verification.PlayerVerification
 name: PlayerVerification
-version: '1.0.0-SNAPSHOT'
+version: '1.0.1'
 description: "Generates time-limited tokens for players to verify account ownership"
 api-version: 1.19
 load: POSTWORLD
