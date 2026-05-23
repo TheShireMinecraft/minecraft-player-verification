@@ -21,11 +21,11 @@ public class TokenServiceTest {
 
         // Act
         var token = systemUnderTest.generateTokenForUuid(playerUuid);
-        var jwtClaims = Jwts.parserBuilder()
+        var jwtClaims = Jwts.parser()
             .setSigningKey(config.tokenSigningKey.getBytes())
             .build()
-            .parseClaimsJws(token)
-            .getBody();
+            .parseSignedClaims(token)
+            .getPayload();
         var msInOneSecond = 1000d;
         var secondsInMinute = 60d;
         var tokenLifeInMinutes = (int) Math.ceil(
@@ -67,10 +67,10 @@ public class TokenServiceTest {
         // Assert
         assertEquals(token, reconstructedToken);
         assertDoesNotThrow(() -> {
-            Jwts.parserBuilder()
+            Jwts.parser()
                     .setSigningKey(config.tokenSigningKey.getBytes())
                     .build()
-                    .parseClaimsJws(reconstructedToken);
+                    .parseSignedClaims(reconstructedToken);
         });
     }
 }

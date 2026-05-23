@@ -19,9 +19,9 @@ public class TokenService {
 
     public String generateTokenForUuid(@NotNull String uuid) {
         var builder = Jwts.builder();
-        builder.setSubject(uuid);
-        builder.setIssuedAt(new Date());
-        builder.setExpiration(calculateExpiryDate(_config.tokenExpiryInMinutes));
+        builder.subject(uuid);
+        builder.issuedAt(new Date());
+        builder.expiration(calculateExpiryDate(_config.tokenExpiryInMinutes));
         builder.signWith(
             Keys.hmacShaKeyFor(_config.tokenSigningKey.getBytes()),
             SignatureAlgorithm.HS256
