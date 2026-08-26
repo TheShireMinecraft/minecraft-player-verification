@@ -16,14 +16,13 @@
         <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <author>Blitheness</author>
         <mainClass>us.shirecraft.verification.PlayerVerification</mainClass>
         <minimumMinecraftVersion>26.2</minimumMinecraftVersion>
     </properties>
 
     <developers>
         <developer>
-            <name>Andy</name>
+            <name>Blitheness</name>
             <email>development@shirecraft.us</email>
             <organization>The Shire Minecraft Server</organization>
             <organizationUrl>https://github.com/TheShireMinecraft</organizationUrl>

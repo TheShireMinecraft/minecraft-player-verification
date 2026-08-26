@@ -4,7 +4,7 @@ version: ${version}
 description: "Generates time-limited tokens for players to verify account ownership"
 api-version: ${minimumMinecraftVersion}
 load: POSTWORLD
-author: ${author}
+author: ${developers[0].name}
 website: shirecraft.us
 prefix: ${name}
 libraries:
