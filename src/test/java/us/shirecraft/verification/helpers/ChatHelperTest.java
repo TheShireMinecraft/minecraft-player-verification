@@ -23,7 +23,10 @@ public class ChatHelperTest {
         // Assert
         assertEquals("[ Verify Account ]", actual.content());
         assertEquals(ClickEvent.Action.OPEN_URL, Objects.requireNonNull(actual.clickEvent()).action());
-        assertEquals(url, Objects.requireNonNull(actual.clickEvent()).value());
+        assertEquals(
+            "TextImpl[value=" + url + "]",
+            Objects.requireNonNull(actual.clickEvent()).payload().toString()
+        );
         assertEquals(NamedTextColor.GREEN, actual.color());
         assertTrue(actual.hasDecoration(TextDecoration.BOLD));
         assertEquals(HoverEvent.Action.SHOW_TEXT, Objects.requireNonNull(actual.hoverEvent()).action());

@@ -1,12 +1,12 @@
-main: us.shirecraft.verification.PlayerVerification
-name: PlayerVerification
-version: '1.3.1'
+main: ${mainClass}
+name: ${name}
+version: ${version}
 description: "Generates time-limited tokens for players to verify account ownership"
-api-version: 26.1.2
+api-version: ${minimumMinecraftVersion}
 load: POSTWORLD
-author: Blitheness
+author: ${author}
 website: shirecraft.us
-prefix: PlayerVerification
+prefix: ${name}
 libraries:
   - io.jsonwebtoken:jjwt-impl:0.13.0
   - io.jsonwebtoken:jjwt-jackson:0.13.0
